@@ -1,0 +1,28 @@
+{
+    "ds000210": [
+        {
+            "run": 1,
+            "subject": "sub-01",
+            "task": "rest"
+        },
+        {
+            "run": 1,
+            "subject": "sub-01",
+            "task": "cuedSGT"
+        }
+    ],
+    "ds000254": [
+        {
+            "run": 1,
+            "subject": "sub-01",
+            "task": "bilateralfingertapping"
+        }
+    ],
+    "ds000258": [
+        {
+            "run": 1,
+            "subject": "sub-04570",
+            "task": "rest"
+        }
+    ]
+}
