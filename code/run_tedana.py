@@ -1,5 +1,5 @@
 """
-Run meica.py
+Run ME-ICA/tedana pipelines
 """
 import json
 # import subprocess
