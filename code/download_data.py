@@ -4,25 +4,37 @@
 """
 Download datasets for comparison from OpenNeuro.
 """
+import json
 import os.path as op
+
 from nistats.datasets import (fetch_openneuro_dataset_index,
                               fetch_openneuro_dataset, select_from_index)
 
 
-def download_dataset(dataset_version):
+def download_dataset(cfg):
     """
     Download a dataset from OpenNeuro using nistats functions.
     """
+    dataset_version = cfg['version']
+
     _, urls = fetch_openneuro_dataset_index(dataset_version=dataset_version)
-    urls = select_from_index(urls, n_subjects=1)
+
+    # Just download based on subject for now.
+    # Don't want to accidentally ignore anats or field maps.
+    filters = ['*sub-{0}*'.format(cfg['subject'])]
+    urls = select_from_index(urls, inclusion_filters=filters)
     temp_urls1 = [url for url in urls if 'derivatives' not in url]
     temp_urls2 = [url for url in urls if 'derivatives/fmriprep' in url]
     urls = temp_urls1 + temp_urls2
+    print('\n\t'.join(urls))
     _, _ = fetch_openneuro_dataset(urls=urls, dataset_version=dataset_version,
                                    data_dir=op.abspath('../data/'))
 
 
-if __name__ == "__main__":
-    DSETS = ['ds000210_R1.0.1', 'ds000254_R1.0.0', 'ds000258_R1.0.0']
-    for dset in DSETS:
-        download_dataset(dset)
+if __name__ == '__main__':
+    with open('dset_config.json', 'r') as fo:
+        CONFIG = json.load(fo)
+
+    for dset in CONFIG.keys():
+        for item_cfg in CONFIG[dset]:
+            download_dataset(item_cfg)

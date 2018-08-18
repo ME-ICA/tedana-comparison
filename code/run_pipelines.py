@@ -6,5 +6,5 @@ Run pipelines on all datasets for comparison.
 """
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass
