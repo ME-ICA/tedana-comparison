@@ -30,10 +30,21 @@ if __name__ == '__main__':
 
             # Run AFNI's meica.py
             out_dir = op.join(ds_dir, 'derivatives/afni/')
-            cmd = ('meica.py -e {0} -d {1} --prefix {2} '
-                   '--OVERWRITE'.format(te_str, file_str, out_dir))
+            meica_script = op.abspath('../dependencies/afni/meica.py')
+            cmd = ('{0} -e {1} -d {2} --prefix {3} '
+                   '--OVERWRITE'.format(meica_script, te_str, file_str,
+                                        out_dir))
             # subprocess.call(cmd.split(' '))
 
+            # Run ME-ICA/me-ica
+            out_dir = op.join(ds_dir, 'derivatives/kundu_v3.2/')
+            meica_script = op.abspath('../dependencies/me-ica/meica.py')
+            cmd = ('{0} -e {1} -d {2} --prefix {3} '
+                   '--OVERWRITE'.format(meica_script, te_str, file_str,
+                                        out_dir))
+            # subprocess.call(cmd.split(' '))
+
+            # Run ME-ICA/tedana
             # Run v2.5 of the component selection algorithm
             out_dir = op.join(ds_dir, 'derivatives/tedana_v2.5/')
             tedana_workflow(data=files, tes=tes, mask=mask_file,
