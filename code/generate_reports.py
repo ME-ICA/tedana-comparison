@@ -6,5 +6,9 @@ Generate reports for comparison.
 """
 
 
-if __name__ == "__main__":
+def generate_report(oc_file, dn_file, ica_comptable, pca_comptable, motpars):
+    pass
+
+
+if __name__ == '__main__':
     pass

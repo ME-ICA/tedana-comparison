@@ -2,27 +2,29 @@
     "ds000210": [
         {
             "run": 1,
-            "subject": "sub-01",
-            "task": "rest"
+            "subject": "01",
+            "task": "rest",
+            "version": "ds000210_R1.0.1"
         },
         {
             "run": 1,
-            "subject": "sub-01",
-            "task": "cuedSGT"
+            "subject": "01",
+            "task": "cuedSGT",
+            "version": "ds000210_R1.0.1"
         }
     ],
     "ds000254": [
         {
-            "run": 1,
-            "subject": "sub-01",
-            "task": "bilateralfingertapping"
+            "subject": "01",
+            "task": "bilateralfingertapping",
+            "version": "ds000254_R1.0.0"
         }
     ],
     "ds000258": [
         {
-            "run": 1,
-            "subject": "sub-04570",
-            "task": "rest"
+            "subject": "04570",
+            "task": "rest",
+            "version": "ds000258_R1.0.0"
         }
     ]
 }
