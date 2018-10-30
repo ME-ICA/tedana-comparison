@@ -1,6 +1,9 @@
 # Location of downloaded data and tedana outputs
 data/
 
+# Locations of tedana, meica, and afni
+dependencies/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
