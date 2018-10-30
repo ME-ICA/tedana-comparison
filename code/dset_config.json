@@ -26,5 +26,12 @@
             "task": "rest",
             "version": "ds000258_R1.0.0"
         }
+    ],
+    "ds001491": [
+        {
+            "subject": "01",
+            "task": "images",
+            "version": "ds001491_R1.0.0"
+        }
     ]
 }
