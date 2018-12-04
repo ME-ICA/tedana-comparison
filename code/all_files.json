@@ -1,0 +1,24 @@
+{
+    "ds000210": {
+        "01": {
+            "1": {
+                "echo_times": [
+                    0.0137,
+                    0.03,
+                    0.047
+                ],
+                "files": [
+                    "/Users/tsalo/Documents/tsalo/tedana-comparison/data/ds000210/sub-01/func/sub-01_task-rest_run-01_echo-1_bold.nii.gz",
+                    "/Users/tsalo/Documents/tsalo/tedana-comparison/data/ds000210/sub-01/func/sub-01_task-rest_run-01_echo-2_bold.nii.gz",
+                    "/Users/tsalo/Documents/tsalo/tedana-comparison/data/ds000210/sub-01/func/sub-01_task-rest_run-01_echo-3_bold.nii.gz"
+                ]
+            }
+        }
+    },
+    "ds000254": {
+        "01": {}
+    },
+    "ds000258": {
+        "04570": {}
+    }
+}
