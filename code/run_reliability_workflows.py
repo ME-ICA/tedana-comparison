@@ -11,6 +11,7 @@ import os.path as op
 from os import makedirs
 from shutil import copyfile, rmtree
 
+from nilearn.masking import compute_epi_mask
 from tedana.workflows import tedana_workflow
 
 
@@ -27,20 +28,22 @@ def run_tedana(files, tes, seed):
     seed : int
         Random seed
     """
-    print(files)
     out_dir = '/scratch/tsalo006/reliability_analysis/tedana_outputs/'
     ds_dir = '/home/data/nbc/external-datasets/ds001491/'
     tes = [te * 1000 for te in tes]
-    print(tes)
     sub = re.findall('sub-[0-9a-zA-Z]+_', files[0])[0][:-1]
     #ds_dir = files[0][:files[0].index(sub)]
     name = 'tedana_seed-{0:03d}'.format(seed)
     ted_dir = op.join(ds_dir, 'derivatives', name, sub, 'func')
     if not op.isdir(ted_dir):
         makedirs(ted_dir)
+    
+    mask = op.join(ted_dir, 'nilearn_epi_mask.nii')
+    mask_img = compute_epi_mask(files[0])
+    mask_img.to_filename(mask)
 
-    tedana_workflow(data=files, tes=tes, fixed_seed=seed,
-                    out_dir=ted_dir, debug=True, gscontrol=None)
+    tedana_workflow(data=files, tes=tes, fixed_seed=seed, verbose=True,
+                    mask=mask, out_dir=ted_dir, debug=True, gscontrol=None)
     # Grab the files we care about
     log_file = op.join(ted_dir, 'runlog.tsv')
     out_log_file = op.join(out_dir, '{0}_seed-{1:03d}_log.tsv'.format(sub, seed))
@@ -61,7 +64,7 @@ if __name__ == '__main__':
     with open('reliability_files.json', 'r') as fo:
         info = json.load(fo)
 
-    for sub in info.keys():
+    for sub in list(info.keys()):
         files = info[sub]['files']
         tes = info[sub]['echo_times']
         run_tedana(files, tes, seed)

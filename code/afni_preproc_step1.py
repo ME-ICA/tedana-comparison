@@ -1,7 +1,7 @@
 """
 Perform slice timing correction and motion correction on dataset.
 """
-from os import mkdir
+from os import mkdir, chdir
 import os.path as op
 from shutil import copyfile
 from bids.layout import BIDSLayout
@@ -52,19 +52,13 @@ if __name__ == '__main__':
     in_dir = '/home/data/nbc/external-datasets/ds001491/'
     out_dir = '/home/data/nbc/external-datasets/ds001491/derivatives/afni-step1/'
     # out_dir = '/scratch/tsalo006/afni-test/'
-    work_dir = '/scratch/tsalo006/work/'
     task = 'images'
 
     layout = BIDSLayout(in_dir)
     subjects = layout.get_subjects(task=task)
-    # subjects = ['sub-{0}'.format(s) for s in subjects]
 
-    for sub in subjects:
+    for sub in sorted(subjects):
         echoes = layout.get_echoes(subject=sub, task=task)
-        sub_work_dir = op.join(work_dir, sub)
-        if not op.isdir(sub_work_dir):
-            mkdir(sub_work_dir)
-
         sub_out_dir = op.join(out_dir, 'sub-{0}'.format(sub))
         if not op.isdir(sub_out_dir):
             mkdir(sub_out_dir)
@@ -72,19 +66,17 @@ if __name__ == '__main__':
         func_out_dir = op.join(sub_out_dir, 'func')
         if not op.isdir(func_out_dir):
             mkdir(func_out_dir)
-
-        for echo in echoes:
-            echo_work_dir = op.join(sub_work_dir, 'echo-{0}'.format(echo))
-            if not op.isdir(echo_work_dir):
-                mkdir(echo_work_dir)
+        
+        for echo in echoes:            
+            chdir(func_out_dir)
 
             echo_file = layout.get(subject=sub, task=task, echo=echo,
-                                   extensions='nii.gz')[0].filename
+                                   extensions='nii.gz')[0].path
             metadata = layout.get_metadata(echo_file)
 
-            stc_file = op.join(echo_work_dir, gen_fname(echo_file, desc='stc'))
-            mc_file = op.join(echo_work_dir, gen_fname(echo_file, desc='realign'))
-            mat_file = op.join(echo_work_dir, 'volreg.1D')
+            stc_file = op.join(func_out_dir, gen_fname(echo_file, desc='stc'))
+            mc_file = op.join(func_out_dir, gen_fname(echo_file, desc='realign'))
+            mat_file = op.join(func_out_dir, 'volreg.1D')
             out_mc_file = op.join(func_out_dir, op.basename(mc_file))
 
             stc = afni.TShift(tzero=0.)
@@ -98,16 +90,14 @@ if __name__ == '__main__':
 
             if echo == echoes[0]:
                 first_echo_file = stc_file
-                mc_est = afni.Volreg()
+                mc_est = afni.Volreg(interp='linear')
                 mc_est.inputs.in_file = first_echo_file
                 mc_est.inputs.out_file = mc_file
                 mc_est.inputs.oned_matrix_save = mat_file
                 mc_est_res = mc_est.run()
             else:
-                mc_app = afni.Allineate()
+                mc_app = afni.Allineate(interpolation='linear')
                 mc_app.inputs.in_matrix = mc_est_res.outputs.oned_matrix_save
                 mc_app.inputs.in_file = stc_file
                 mc_app.inputs.out_file = mc_file
                 mc_app.run()
-
-            copyfile(mc_file, out_mc_file)
