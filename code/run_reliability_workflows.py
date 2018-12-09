@@ -31,6 +31,7 @@ def run_tedana(files, tes, seed):
     out_dir = '/scratch/tsalo006/reliability_analysis/tedana_outputs/'
     ds_dir = '/home/data/nbc/external-datasets/ds001491/'
     tes = [te * 1000 for te in tes]
+    print(tes)
     sub = re.findall('sub-[0-9a-zA-Z]+_', files[0])[0][:-1]
     #ds_dir = files[0][:files[0].index(sub)]
     name = 'tedana_seed-{0:03d}'.format(seed)
