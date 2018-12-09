@@ -8,6 +8,7 @@ import re
 import sys
 import json
 import os.path as op
+from os import makedirs
 from shutil import copyfile, rmtree
 
 from tedana.workflows import tedana_workflow
@@ -26,16 +27,19 @@ def run_tedana(files, tes, seed):
     seed : int
         Random seed
     """
+    print(files)
     out_dir = '/scratch/tsalo006/reliability_analysis/tedana_outputs/'
+    ds_dir = '/home/data/nbc/external-datasets/ds001491/'
     tes = [te * 1000 for te in tes]
     sub = re.findall('sub-[0-9a-zA-Z]+_', files[0])[0][:-1]
-    ds_dir = files[0][:files[0].index(sub)]
+    #ds_dir = files[0][:files[0].index(sub)]
     name = 'tedana_seed-{0:03d}'.format(seed)
     ted_dir = op.join(ds_dir, 'derivatives', name, sub, 'func')
+    if not op.isdir(ted_dir):
+        makedirs(ted_dir)
+
     tedana_workflow(data=files, tes=tes, fixed_seed=seed,
-                    out_dir=ted_dir, debug=True,
-                    tedpca='mle', wvpca=False, combmode='t2s',
-                    ste=-1, gscontrol=None)
+                    out_dir=ted_dir, debug=True, gscontrol=None)
     # Grab the files we care about
     log_file = op.join(ted_dir, 'runlog.tsv')
     out_log_file = op.join(out_dir, '{0}_seed-{1:03d}_log.tsv'.format(sub, seed))

@@ -31,7 +31,7 @@ def get_files():
                 raise Exception('BAD')
 
             # Replace filename with path when using new version of bids
-            sub_info['files'].append(preproc_files[0].filename)
+            sub_info['files'].append(preproc_files[0].path)
             metadata = raw_files[0].metadata
             sub_info['echo_times'].append(metadata['EchoTime'])
         info[sub] = sub_info
