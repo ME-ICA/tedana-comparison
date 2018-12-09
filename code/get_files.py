@@ -13,7 +13,7 @@ def get_files():
     with open('dset_config.json', 'r') as fo:
         CONFIG = json.load(fo)
 
-    DATA_DIR = op.abspath('../data')
+    DATA_DIR = op.abspath('/home/data/nbc/external-datasets/ds001491/')
 
     all_info = {}
     for dset_name in list(CONFIG.keys())[:3]:
@@ -33,10 +33,9 @@ def get_files():
                     raw_files = layout.get(subject=sub, task=task, run=run,
                                            echo=echo, extensions='.nii.gz')
                     preproc_files = layout.get(subject=sub, task=task, run=run,
-                                               root='afni', echo=echo,
+                                               root='afni-step1', echo=echo,
                                                extensions='.nii.gz',
-                                               desc='preproc',
-                                               space='MNI152NLin2009cAsym')
+                                               desc='realign')
                     preproc_files = raw_files[:]
                     if len(preproc_files) != 1:
                         print(preproc_files)

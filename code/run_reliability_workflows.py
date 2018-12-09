@@ -5,9 +5,10 @@
 Run base pipeline on one dataset many times.
 """
 import re
+import sys
 import json
 import os.path as op
-from shutil import copyfile
+from shutil import copyfile, rmtree
 
 from tedana.workflows import tedana_workflow
 
@@ -29,7 +30,7 @@ def run_tedana(files, tes, seed):
     tes = [te * 1000 for te in tes]
     sub = re.findall('sub-[0-9a-zA-Z]+_', files[0])[0][:-1]
     ds_dir = files[0][:files[0].index(sub)]
-    name = 'base_tedana_seed-{0:03d}'.format(seed)
+    name = 'tedana_seed-{0:03d}'.format(seed)
     ted_dir = op.join(ds_dir, 'derivatives', name, sub, 'func')
     tedana_workflow(data=files, tes=tes, fixed_seed=seed,
                     out_dir=ted_dir, debug=True,
@@ -45,22 +46,17 @@ def run_tedana(files, tes, seed):
     copyfile(log_file, out_log_file)
     copyfile(ct_file, out_ct_file)
     copyfile(dn_file, out_dn_file)
-
-
-def run_dset(dset_dict):
-    n_iterations = 1000
-    for sub in dset_dict.keys():
-        for run in dset_dict[sub].keys():
-            files = dset_dict[sub][run]['files']
-            tes = dset_dict[sub][run]['echo_times']
-            for seed in range(n_iterations):
-                run_tedana(files, tes, seed)
+    rmtree(ted_dir)
 
 
 if __name__ == '__main__':
-    with open('ds01491_files.json', 'r') as fo:
-        all_dict = json.load(fo)
+    seed = sys.argv[1]
+    seed = int(seed)
 
-    for dset in all_dict.keys():
-        dataset_dict = all_dict[dset]
-        run_dset(dataset_dict)
+    with open('reliability_files.json', 'r') as fo:
+        info = json.load(fo)
+
+    for sub in info.keys():
+        files = info[sub]['files']
+        tes = info[sub]['echo_times']
+        run_tedana(files, tes, seed)

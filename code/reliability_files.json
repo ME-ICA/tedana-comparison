@@ -1,0 +1,242 @@
+{
+    "01": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-01_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-01_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-01_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "03": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-03_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-03_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-03_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "04": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-04_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-04_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-04_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "05": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-05_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-05_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-05_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "06": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-06_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-06_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-06_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "07": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-07_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-07_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-07_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "08": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-08_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-08_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-08_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "09": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-09_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-09_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-09_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "10": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-10_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-10_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-10_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "11": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-11_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-11_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-11_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "12": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-12_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-12_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-12_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "13": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-13_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-13_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-13_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "14": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-14_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-14_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-14_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "15": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-15_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-15_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-15_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "16": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-16_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-16_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-16_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "17": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-17_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-17_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-17_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "18": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-18_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-18_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-18_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "19": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-19_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-19_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-19_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "20": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-20_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-20_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-20_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    },
+    "21": {
+        "echo_times": [
+            0.00802,
+            0.02203,
+            0.03603
+        ],
+        "files": [
+            "sub-21_task-images_echo-1_desc-realign_bold.nii.gz",
+            "sub-21_task-images_echo-2_desc-realign_bold.nii.gz",
+            "sub-21_task-images_echo-3_desc-realign_bold.nii.gz"
+        ]
+    }
+}
