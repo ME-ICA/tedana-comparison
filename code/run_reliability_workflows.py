@@ -35,14 +35,15 @@ def run_tedana(files, tes, seed):
     #ds_dir = files[0][:files[0].index(sub)]
     name = 'tedana_seed-{0:03d}'.format(seed)
     ted_dir = op.join(ds_dir, 'derivatives', name, sub, 'func')
-    if not op.isdir(ted_dir):
-        makedirs(ted_dir)
+    if op.isdir(ted_dir):
+        rmtree(ted_dir)
+    makedirs(ted_dir)
     
     mask = op.join(ted_dir, 'nilearn_epi_mask.nii')
     mask_img = compute_epi_mask(files[0])
     mask_img.to_filename(mask)
 
-    tedana_workflow(data=files, tes=tes, fixed_seed=seed, verbose=True,
+    tedana_workflow(data=files, tes=tes, fixed_seed=seed,
                     mask=mask, out_dir=ted_dir, debug=True, gscontrol=None)
     # Grab the files we care about
     log_file = op.join(ted_dir, 'runlog.tsv')
@@ -63,8 +64,16 @@ if __name__ == '__main__':
 
     with open('reliability_files.json', 'r') as fo:
         info = json.load(fo)
+    
+    subjects = list(info.keys())
+    subjects_to_run = []
+    for sub in subjects:
+        out_dir = '/scratch/tsalo006/reliability_analysis/tedana_outputs/'
+        out_dn_file = op.join(out_dir, '{0}_seed-{1:03d}_denoised.nii'.format(sub, seed))
+        if not op.isfile(out_dn_file):
+            subjects_to_run.append(sub)
 
-    for sub in list(info.keys()):
+    for sub in subjects_to_run:
         files = info[sub]['files']
         tes = info[sub]['echo_times']
         run_tedana(files, tes, seed)
