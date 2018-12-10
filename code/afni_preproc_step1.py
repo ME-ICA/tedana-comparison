@@ -1,5 +1,8 @@
 """
-Perform slice timing correction and motion correction on dataset.
+Pre-tedana steps:
+- Slice timing correction
+- Estimate motion correction parameters for first echo
+- Apply parameters to all echoes
 """
 from os import mkdir, chdir
 import os.path as op
