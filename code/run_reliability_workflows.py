@@ -43,7 +43,7 @@ def run_tedana(files, tes, seed):
     mask_img = compute_epi_mask(files[0])
     mask_img.to_filename(mask)
 
-    tedana_workflow(data=files, tes=tes, fixed_seed=seed,
+    tedana_workflow(data=files, tes=tes, fixed_seed=seed, tedpca='mle',
                     mask=mask, out_dir=ted_dir, debug=True, gscontrol=None)
     # Grab the files we care about
     log_file = op.join(ted_dir, 'runlog.tsv')
@@ -55,7 +55,8 @@ def run_tedana(files, tes, seed):
     copyfile(log_file, out_log_file)
     copyfile(ct_file, out_ct_file)
     copyfile(dn_file, out_dn_file)
-    rmtree(ted_dir)
+    if seed != 0:  # keep first seed for t2s map
+        rmtree(ted_dir)
 
 
 if __name__ == '__main__':
