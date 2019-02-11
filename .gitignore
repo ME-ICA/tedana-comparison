@@ -1,3 +1,9 @@
+code/outfiles/
+code/errorfiles/
+code/jobfiles/
+sandbox/
+reports/figures/
+
 # Location of downloaded data and tedana outputs
 data/
 

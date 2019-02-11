@@ -48,9 +48,4 @@ if __name__ == '__main__':
             # Run v2.5 of the component selection algorithm
             out_dir = op.join(ds_dir, 'derivatives/tedana_v2.5/')
             tedana_workflow(data=files, tes=tes, mask=mask_file,
-                            out_dir=out_dir, component_algorithm='v2.5')
-
-            # Run v3.2 of the component selection algorithm
-            out_dir = op.join(ds_dir, 'derivatives/tedana_v3.2/')
-            tedana_workflow(data=files, tes=tes, mask=mask_file,
-                            out_dir=out_dir, component_algorithm='v3.2')
+                            out_dir=out_dir)
